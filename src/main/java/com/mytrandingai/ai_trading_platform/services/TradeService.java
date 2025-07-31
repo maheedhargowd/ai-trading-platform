@@ -5,22 +5,31 @@ package com.mytrandingai.ai_trading_platform.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mytrandingai.ai_trading_platform.models.Trade;
 
+import com.mytrandingai.ai_trading_platform.repositories.TradeRepository;
+
 @Service
 public class TradeService {
 
+    private final TradeRepository tradeRepository;
 
+    //constructor injection 
+    @Autowired
+    public TradeService(TradeRepository tradeRepository){
+        this.tradeRepository=tradeRepository;
+    }
     public List<Trade> getAllTrades(){
 
 
-                 
-        List<Trade> trades = new ArrayList<>(); // 7
-        trades.add(new Trade(134L, "AAPL", 10)); // 8
-        trades.add(new Trade(2L, "GOOG", 5));  // 9
-        return trades; 
+        return tradeRepository.findAll(); 
+    }
+
+    public Trade saveTrade(Trade trade){
+        return tradeRepository.save(trade);
     }
     
 }

@@ -1,16 +1,28 @@
 package com.mytrandingai.ai_trading_platform.models;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-
-public class Trade {                // 1
-    private Long id;                // 2
-    private String symbol;          // 3
+@Entity
+public class Trade {      
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)       // 1
+    private Long id;   
+    
+    @NotBlank(message="symbol is manditory")// 2
+    private String symbol;  
+    
+    @NotNull(message="quantity is manditory")
+    @Min(value =1 , message="quantity must be atlesst 1")// 3 
     private int quantity;           // 4
 
-    public Trade(){
-
-    }
+    public Trade(){}
     // Constructor
     public Trade(Long id, String symbol, int quantity) {      // 5
         this.id = id;
