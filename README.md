@@ -1,37 +1,45 @@
 # AI Trading Platform Backend
 
-This is a backend-only Spring Boot REST API for a trading platform.  
-Today’s build focused on:
-
-- Setting up a Maven Spring Boot project with `spring-boot-starter-web`.
-- Creating first REST endpoints (`GET /api/trades`).
-- Defining a simple `Trade` data model.
-- Adding a service layer to separate business logic.
-- Returning hardcoded trade data (no database integration yet).
-
-## Project Structure
-
-- `controller/` - REST controllers handling HTTP requests
-- `service/` - Business logic layer
-- `model/` - Data models representing trade information
+## Overview
+Spring Boot REST API with:
+- JPA persistence using H2 in-memory DB
+- CRUD endpoints for managing trades
+- Basic validation and error handling on POST requests
 
 ## How to Run
+1. Make sure Java 17+ and Maven are installed.
+2. Clone repo and run: mvn spring-boot:run
+3. Access app at `http://localhost:8080`
 
-1. Ensure Java 17+ and Maven are installed.
-2. Clone the repo: `https://github.com/maheedhargowd/ai-trading-platform.git`
-3. Run Spring Boot:  mvn spring-boot:run
-4. Test endpoint:  `GET http://localhost:8080/api/trades`  
-Should return a JSON array of trades.
+## API Endpoints
+
+### GET /api/trades  
+Retrieve all trades.
+
+**Response Example:**
+[
+{"id":1,"symbol":"AAPL","quantity":10},
+{"id":2,"symbol":"GOOG","quantity":20}
+]
+
+### POST /api/trades  
+Create a new trade (JSON body).
+
+**Request Example:**
+{
+"symbol": "TSLA",
+"quantity": 15
+}
+
+
+**Error Responses:**
+- 400 Bad Request if `symbol` is empty or `quantity` < 1  
+  Example error message: `"symbol: Symbol is mandatory; quantity: Quantity must be at least 1;"`
 
 ## Next Steps
-
-- Add persistence with a database (JPA + H2/PostgreSQL).
-- Implement POST endpoints to create new trades.
-- Add basic security.
-- Plan AI integration for trade signals.
-
----
-
-_Summary:_ This project is an evolving Spring Boot backend platform for AI-powered trading.
+- Add PUT and DELETE endpoints
+- Persist data in a real DB like PostgreSQL
+- Implement authentication/security
+- Integrate AI for automated trade signals
 
 
