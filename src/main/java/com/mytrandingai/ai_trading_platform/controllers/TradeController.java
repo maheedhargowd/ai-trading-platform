@@ -34,6 +34,21 @@ public class TradeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Trade> updateTrade(@PathVariable Long id , @RequestBody @Valid Trade trade){
+
+        Trade updated = tradeService.updateTrade(id,trade);
+        return ResponseEntity.ok(updated);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTrade(@PathVariable Long id){
+        tradeService.deleteTrade(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
     // Global exception handler for validation errors
     @ExceptionHandler(MethodArgumentNotValidException.class)
