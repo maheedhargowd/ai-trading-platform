@@ -29,23 +29,24 @@ public class TradeController {
     }    
 
     @PostMapping("/savetrade")
-    public ResponseEntity<Trade> saveTrade(@Valid @RequestBody Trade trade){
-        Trade saved = tradeService.saveTrade(trade);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+    public ResponseEntity<String> saveTrade(@Valid @RequestBody Trade trade){
+        String  result = tradeService.saveTrade(trade);
+        return ResponseEntity.ok().body(result);
+        
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Trade> updateTrade(@PathVariable Long id , @RequestBody @Valid Trade trade){
+    @PutMapping("/updatetrade{id}")
+    public ResponseEntity<String> updateTrade(@PathVariable Long id , @RequestBody @Valid Trade trade){
 
-        Trade updated = tradeService.updateTrade(id,trade);
-        return ResponseEntity.ok(updated);
+        String result = tradeService.updateTrade(id,trade);
+        return ResponseEntity.ok().body(result);
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTrade(@PathVariable Long id){
+    @DeleteMapping("/deletetrade{id}")
+    public ResponseEntity<String> deleteTrade(@PathVariable Long id){
         tradeService.deleteTrade(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("trade deleted successfully");
     }
 
 

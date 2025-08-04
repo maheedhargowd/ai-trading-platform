@@ -5,6 +5,7 @@ package com.mytrandingai.ai_trading_platform.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,17 +29,21 @@ public class TradeService  {
         return tradeRepository.findAll(); 
     }
 
-    public Trade saveTrade(Trade trade){
-        return tradeRepository.save(trade);
+    public String saveTrade(Trade trade){
+
+        
+        
+        tradeRepository.save(trade);
+        return "Trade saved successfully";
     }
 
-    public Trade updateTrade(Long id , Trade tradeDetails){
+    public String updateTrade(Long id , Trade tradeDetails){
 
         Trade trade  =  tradeRepository.findById(id).orElseThrow(() -> new  RuntimeException("Trade not found"));
         trade.setSymbol(tradeDetails.getSymbol());
         trade.setQuantity(tradeDetails.getQuantity());
-        return tradeRepository.save(trade);
-
+        tradeRepository.save(trade);
+        return "trade updated successfully";
 
 
 
