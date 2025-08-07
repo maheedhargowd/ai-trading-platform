@@ -25,7 +25,7 @@ public class TradeController {
 
     @GetMapping("/getalltrades")
     public List<Trade> getalltrades(){
-       return  tradeService.getAllTrades();
+       return  tradeService.getAllTrades(); 
     }    
 
     @PostMapping("/savetrade")
