@@ -13,7 +13,7 @@ public class SecurityConfig {
         http
             .csrf().disable()  // Disable CSRF for API (optional, based on your use case)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/signup", "/api/auth/login").permitAll()  // Allow unauth access here
+                .requestMatchers("/api","/api/auth/signup", "/api/auth/login").permitAll()  // Allow unauth access here
                 .anyRequest().authenticated()  // Secure everything else
             )
             .formLogin().disable();  // Disable default form login if you don't need it
