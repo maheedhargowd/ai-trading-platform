@@ -23,16 +23,10 @@ public class TradeService  {
     public TradeService(TradeRepository tradeRepository){
         this.tradeRepository=tradeRepository;
     }
-    public List<Trade> getAllTrades(){
 
-
-        return tradeRepository.findAll(); 
-    }
 
     public String saveTrade(Trade trade){
 
-        
-        
         tradeRepository.save(trade);
         return "Trade saved successfully";
     }
@@ -54,6 +48,12 @@ public class TradeService  {
             throw new RuntimeException("Trade not found");
         }
         tradeRepository.deleteById(id);
+    }
+
+    public List<Trade> getAllTrades(){
+
+
+        return tradeRepository.findAll(); 
     }
     
 }

@@ -23,11 +23,6 @@ public class TradeController {
         this.tradeService=tradeService;
     }
 
-    @GetMapping("/getalltrades")
-    public List<Trade> getalltrades(){
-       return  tradeService.getAllTrades(); 
-    }    
-
     @PostMapping("/savetrade")
     public ResponseEntity<String> saveTrade(@Valid @RequestBody Trade trade){
         String  result = tradeService.saveTrade(trade);
@@ -48,6 +43,11 @@ public class TradeController {
         tradeService.deleteTrade(id);
         return ResponseEntity.ok("trade deleted successfully");
     }
+    
+    @GetMapping("/getalltrades")
+    public List<Trade> getalltrades(){
+       return  tradeService.getAllTrades(); 
+    }    
 
 
 
