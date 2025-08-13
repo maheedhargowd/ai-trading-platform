@@ -23,17 +23,20 @@ public class Transaction {
     @Column(name = "user_id")
     private Long userId;
 
+    @Column(name="transaction_type")
+    private String transactionType; //BUY or SELL
+
     @Column(name = "company_name")
     private String companyName;
 
     @Column(name = "stock_symbol")
     private String stockSymbol;
 
-    @Column(name = "number_of_stocks_bought")
-    private double numberOfStocksBought;
+    @Column(name = "number_of_stocks")
+    private double numberOfStocks;
 
-    @Column(name = "stock_price_at_buy")
-    private double stockPriceAtBuy;
+    @Column(name = "stock_price_at_transaction")
+    private double stockPriceAtTransaction;
 
     @Column(name = "total_amount_in_usd")
     private double totalAmountInUSD;
@@ -41,8 +44,7 @@ public class Transaction {
     @Column(name = "current_stock_price")
     private double currentStockPrice;
 
-    @Column(name="transaction_type")
-    private String transactionType; //BUY or SELL
+ 
 
     // ==============================
     // Constructors
@@ -72,12 +74,12 @@ public class Transaction {
         return stockSymbol;
     }
 
-    public double getNumberOfStocksBought() {
-        return numberOfStocksBought;
+    public double getNumberOfStocks() {
+        return numberOfStocks;
     }
 
-    public double getStockPriceAtBuy() {
-        return stockPriceAtBuy;
+    public double getStockPriceAtTransaction() {
+        return stockPriceAtTransaction;
     }
 
     public double getTotalAmountInUSD() {
@@ -111,12 +113,12 @@ public class Transaction {
         this.stockSymbol = stockSymbol;
     }
 
-    public void setNumberOfStocksBought(double numberOfStocksBought) {
-        this.numberOfStocksBought = numberOfStocksBought;
+    public void setNumberOfStocks(double numberOfStocks) {
+        this.numberOfStocks = numberOfStocks;
     }
 
-    public void setStockPriceAtBuy(double stockPriceAtBuy) {
-        this.stockPriceAtBuy = stockPriceAtBuy;
+    public void setStockPriceAtTransaction(double stockPriceAtTransaction) {
+        this.stockPriceAtTransaction = stockPriceAtTransaction;
     }
 
     public void setTotalAmountInUSD(double totalAmountInUSD) {
