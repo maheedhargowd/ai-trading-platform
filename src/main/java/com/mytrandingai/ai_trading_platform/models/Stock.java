@@ -4,27 +4,31 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
 @Entity
 public class Stock {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String stockSymbol;
+    @Column(name = "symbol")
+    private String symbol;
+    
+    @Column(name = "company_name")
     private String companyName;
+    
+    @Column(name = "current_price")
+    private double currentPrice;
+    
+    @Column(name = "sector")
     private String sector;
-    private double priceInUSD;
-    private double marketCapBiilionUSD;
-    private double volumeInMillions;
-    private double PERatio;
 
     // No-argument constructor
     public Stock() {}
 
     // Getters and Setters
-
     public Long getId() {
         return id;
     }
@@ -32,11 +36,11 @@ public class Stock {
         this.id = id;
     }
 
-    public String getStockSymbol() {
-        return stockSymbol;
+    public String getSymbol() {
+        return symbol;
     }
-    public void setStockSymbol(String stockSymbol) {
-        this.stockSymbol = stockSymbol;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public String getCompanyName() {
@@ -46,38 +50,17 @@ public class Stock {
         this.companyName = companyName;
     }
 
+    public double getCurrentPrice() {
+        return currentPrice;
+    }
+    public void setCurrentPrice(double currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
     public String getSector() {
         return sector;
     }
     public void setSector(String sector) {
         this.sector = sector;
-    }
-
-    public double getPriceInUSD() {
-        return priceInUSD;
-    }
-    public void setPriceInUSD(double priceInUSD) {
-        this.priceInUSD = priceInUSD;
-    }
-
-    public double getMarketCapBiilionUSD() {
-        return marketCapBiilionUSD;
-    }
-    public void setMarketCapBiilionUSD(double marketCapBiilionUSD) {
-        this.marketCapBiilionUSD = marketCapBiilionUSD;
-    }
-
-    public double getVolumeInMillions() {
-        return volumeInMillions;
-    }
-    public void setVolumeInMillions(double volumeInMillions) {
-        this.volumeInMillions = volumeInMillions;
-    }
-
-    public double getPERatio() {
-        return PERatio;
-    }
-    public void setPERatio(double PERatio) {
-        this.PERatio = PERatio;
     }
 }

@@ -1,0 +1,133 @@
+package com.mytrandingai.ai_trading_platform.models;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+/**
+ * Represents a stock transaction made by a user.
+ */
+@Entity
+public class Transaction {
+
+    // ==============================
+    // Fields
+    // ==============================
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "user_id")
+    private Long userId;
+
+    @Column(name = "company_name")
+    private String companyName;
+
+    @Column(name = "stock_symbol")
+    private String stockSymbol;
+
+    @Column(name = "number_of_stocks_bought")
+    private double numberOfStocksBought;
+
+    @Column(name = "stock_price_at_buy")
+    private double stockPriceAtBuy;
+
+    @Column(name = "total_amount_in_usd")
+    private double totalAmountInUSD;
+
+    @Column(name = "current_stock_price")
+    private double currentStockPrice;
+
+    @Column(name="transaction_type")
+    private String transactionType; //BUY or SELL
+
+    // ==============================
+    // Constructors
+    // ==============================
+
+    public Transaction() {
+        // Default no-argument constructor
+    }
+
+    // ==============================
+    // Getters
+    // ==============================
+
+    public Long getId() {
+        return id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getStockSymbol() {
+        return stockSymbol;
+    }
+
+    public double getNumberOfStocksBought() {
+        return numberOfStocksBought;
+    }
+
+    public double getStockPriceAtBuy() {
+        return stockPriceAtBuy;
+    }
+
+    public double getTotalAmountInUSD() {
+        return totalAmountInUSD;
+    }
+
+    public double getCurrentStockPrice() {
+        return currentStockPrice;
+    }
+
+    public String getTransactionType(){
+        return transactionType;
+    }
+    // ==============================
+    // Setters
+    // ==============================
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setStockSymbol(String stockSymbol) {
+        this.stockSymbol = stockSymbol;
+    }
+
+    public void setNumberOfStocksBought(double numberOfStocksBought) {
+        this.numberOfStocksBought = numberOfStocksBought;
+    }
+
+    public void setStockPriceAtBuy(double stockPriceAtBuy) {
+        this.stockPriceAtBuy = stockPriceAtBuy;
+    }
+
+    public void setTotalAmountInUSD(double totalAmountInUSD) {
+        this.totalAmountInUSD = totalAmountInUSD;
+    }
+
+    public void setCurrentStockPrice(double currentStockPrice) {
+        this.currentStockPrice = currentStockPrice;
+    }
+
+    public void setTransactionType(String transactionType){
+        this.transactionType=transactionType;
+    }
+}
