@@ -51,8 +51,12 @@ public class StockController {
            return  ResponseEntity.ok().body(result);
         }else if(result.equals("failed to sell stock !")){
             return  ResponseEntity.badRequest().body(result);
+        }else if(result.equals("Error occured while selling stock !")){
+            return ResponseEntity.badRequest().body(result);
         }
         return ResponseEntity.badRequest().body(result);
+
+        
     }
         
 }

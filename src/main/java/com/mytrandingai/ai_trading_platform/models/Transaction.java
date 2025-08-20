@@ -33,16 +33,14 @@ public class Transaction {
     private String stockSymbol;
 
     @Column(name = "number_of_stocks")
-    private double numberOfStocks;
+    private Double numberOfStocks;
 
     @Column(name = "stock_price_at_transaction")
-    private double stockPriceAtTransaction;
+    private Double stockPriceAtTransaction;
 
     @Column(name = "total_amount_in_usd")
-    private double totalAmountInUSD;
+    private Double totalAmountInUSD;
 
-    @Column(name = "current_stock_price")
-    private double currentStockPrice;
 
  
 
@@ -61,7 +59,7 @@ public class Transaction {
     public Long getId() {
         return id;
     }
-
+    
     public Long getUserId() {
         return userId;
     }
@@ -74,21 +72,19 @@ public class Transaction {
         return stockSymbol;
     }
 
-    public double getNumberOfStocks() {
+    public Double getNumberOfStocks() {
         return numberOfStocks;
     }
 
-    public double getStockPriceAtTransaction() {
+    public Double getStockPriceAtTransaction() {
         return stockPriceAtTransaction;
     }
 
-    public double getTotalAmountInUSD() {
+    public Double getTotalAmountInUSD() {
         return totalAmountInUSD;
     }
 
-    public double getCurrentStockPrice() {
-        return currentStockPrice;
-    }
+
 
     public String getTransactionType(){
         return transactionType;
@@ -125,9 +121,7 @@ public class Transaction {
         this.totalAmountInUSD = totalAmountInUSD;
     }
 
-    public void setCurrentStockPrice(double currentStockPrice) {
-        this.currentStockPrice = currentStockPrice;
-    }
+
 
     public void setTransactionType(String transactionType){
         this.transactionType=transactionType;

@@ -18,7 +18,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @GetMapping("/getalltransactions")
+    @GetMapping("/getalltransactions") 
     public ResponseEntity<List<Transaction>> getAllTransactions() {
         List<Transaction> transactions = transactionService.getAllTransactions();
         return ResponseEntity.ok(transactions);

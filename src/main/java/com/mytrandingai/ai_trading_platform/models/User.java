@@ -1,22 +1,25 @@
 package com.mytrandingai.ai_trading_platform.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 @Entity(name="users")
 public class User {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
+    private Long id;
 
     @NotBlank(message = "name is required")
-    private String name ;
+    private String name;
 
     @NotBlank(message = "Email is required ")
     @Email(message="Email should be valid")
@@ -28,44 +31,49 @@ public class User {
 
     private double balance;
 
-    //no-arg constructor 
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private List<UserStock> userStocks;
 
-    public User(){}
+    // No-arg constructor
+    public User() {}
 
-    //getters 
-
-    public String getName(){
-        return this.name;
+    // Getters
+    public Long getId() {
+        return id;
     }
-    
-    public String getEmailid(){
-        return this.emailid;
+    public String getName() {
+        return name;
     }
-    
-    public String getPassword(){
-        return this.password;
+    public String getEmailid() {
+        return emailid;
     }
-    
-    public double getBalance(){
-        return this.balance;
+    public String getPassword() {
+        return password;
     }
-
-    //setters
-
-    public void setName(String name){
-        this.name=name;
+    public double getBalance() {
+        return balance;
     }
-    public void setPassword(String password){
-        this.password=password;
-    }
-    public void setEmail(String emailid){
-        this.emailid=emailid;
-    }
-    public void setBalance(double balance){
-        this.balance=balance;
+    public List<UserStock> getUserStocks() {
+        return userStocks;
     }
 
-
-
-
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setEmail(String emailid) {
+        this.emailid = emailid;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+    public void setUserStocks(List<UserStock> userStocks) {
+        this.userStocks = userStocks;
+    }
 }
